@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rock Paper Scissors</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand">가위 바위 가위 핵무기!</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="./index.html">English</a></li>
+          <li><a href="./russian.html">русскийрусский</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-3">가위 바위 가위 핵!</h1>
+      <p class="lead">기본 외교</p>
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row" div id="row1">
+    <div class="col-lg-12">
+      <div id="game">
+
+        <p><h2>"r"을 눌러 "rock"을 연주하고 "p"를 눌러 "paper"를 연주하거나 "s"를 사용하여 "scissors"또는 "n"을 연주하여 핵을 연주하십시오!</h2></p>
+      </div>
+    </div>
+    </div
+
+    <br>
+    <div class="row" div id="row2">
+      <div class="col-lg-12">
+        <img src="http://i2.cdn.cnn.com/cnnnext/dam/assets/170831090611-kim-jong-un-and-trump-tease-exlarge-169.jpg" img id="kimtrump">
+
+      </div>
+    </div>
+
+    <script type="text/javascript">
+    //Creates an array that lists out all of the options
+    var computerChoices = ["r", "p", "s", "n"];
+
+    //Creating variables to hold the number of iwns, losses and ties. They start at 0
+    var wins = 0;
+    var losses  = 0;
+    var ties = 0;
+
+    //This function is run whenver the user presses a key.
+    document.onkeyup = function(event) {
+
+      //Determines which key was pressed
+
+      var userGuess = event.key;
+
+      //Randomly chooses a choice sfromt he options array.  This is the Computer's guess.
+      var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+      //This logic determines the outcome of the game, and increments the approriate number
+      if ((userGuess === "r") || (userGuess === "p") || (userGuess === "s") || (userGuess === "n")) {
+
+        if ((userGuess === "r") && (computerGuess === "s")) {
+          wins++;
+
+        } else if ((userGuess === "r") && (computerGuess === "p")) {
+          losses++;
+
+        } else if ((userGuess === "r") && (computerGuess === "n")) {
+          losses++;
+
+        } else if ((userGuess === "s") && (computerGuess === "r")) {
+          losses++;
+
+        } else if ((userGuess === "s") && (computerGuess === "p")) {
+          wins++;
+
+        } else if ((userGuess === "s") && (computerGuess === "n")) {
+          lossess++;
+
+        } else if ((userGuess === "p") && (computerGuess === "r")) {
+          wins++;
+
+        } else if ((userGuess === "p") && (computerGuess === "s")) {
+          losses++;
+
+        } else if ((userGuess === "p") && (computerGuess === "n")) {
+          losses++;
+
+        } else if ((userGuess === "n") && (computerGuess === "r" || "s" || "p")) {
+          wins++;
+
+        } else if (userGuess === computerGuess) {
+          ties++;
+        }
+
+
+        //Creating a variable to hold our new HTML.  OUr HTML now keeps track of hte user and computer guesses, and wins/losses/ties
+        var html =
+        "<p><h2>당신의 선택: " + userGuess + "</h2></p>" +
+        "<p><h2>컴퓨터 선택: " + computerGuess + "</h2></p>" +
+        "<p><h3>승리: " + wins + "</h3></p>" +
+        "<p><h3>사상자 수: " + losses + "</h3></p>" +
+        "<p><h3>의: " + ties + "</h3></p>";
+
+        //Set the inner HTML contents of #game div to ur html string
+        document.querySelector("#game").innerHTML = html;
+      }
+    };
+
+    </script>
+  </body>
+  </html>
